@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Serko.Travel.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Serko.Travel.Core.Services
+namespace Serko.Travel.Core.Interfaces
 {
-	interface IParseTextService
+	public interface IParseTextService
 	{
+		Email ExtractData(string byEmail);
 	}
 }

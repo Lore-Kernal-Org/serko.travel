@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Serko.Travel.Core.Exceptions;
+using Serko.Travel.Core.Interfaces;
 using Serko.Travel.Core.Models;
 using Serko.Travel.Core.Services;
 using System;
@@ -14,6 +15,12 @@ namespace Serko.Travel.WebAPI.Controllers
 {
 	public class SerkoController : ApiController
 	{
+		IParseTextService service;
+
+		public SerkoController(IParseTextService service)
+		{
+			this.service = service;
+		}
 
 		/// <summary>
 		/// Api health check
@@ -27,7 +34,6 @@ namespace Serko.Travel.WebAPI.Controllers
 		[HttpPost]
 		public IHttpActionResult Post([FromBody] string value)
 		{
-			var service = new ParseTextService();
 			var email = new Email();
 			try
 			{

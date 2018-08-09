@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Serko.Travel.Core.Models;
 using Serko.Travel.Core.Exceptions;
+using Serko.Travel.Core.Interfaces;
 
 namespace Serko.Travel.Core.Services
 {
-	public class ParseTextService
+	public class ParseTextService : IParseTextService
 	{
 
 		public Email ExtractData(string byEmail)
