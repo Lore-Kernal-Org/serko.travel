@@ -121,9 +121,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Serko.Travel.Core\Serko.Travel.Core.csproj">
       <Project>{cb80c7ac-8205-4d54-b55b-ffee679cc10d}</Project>

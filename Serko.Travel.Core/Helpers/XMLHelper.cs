@@ -14,7 +14,9 @@ namespace Serko.Travel.Core.Helpers
 	{
 		public static string ParseToXML(string fromPlainText)
 		{
-			string reformatPlainText = $"<root>{fromPlainText}</root>";
+			string plainTextWithoutEmails = TextHelper.ReplaceEmails(fromPlainText, true);
+
+			string reformatPlainText = $"<root>{plainTextWithoutEmails}</root>";
 			XmlDocument doc = new XmlDocument();
 			try
 			{

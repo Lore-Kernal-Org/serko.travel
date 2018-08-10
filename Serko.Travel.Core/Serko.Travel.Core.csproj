@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\InvalidXMLTagException.cs" />
     <Compile Include="Exceptions\MissingTotalException.cs" />
+    <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="Helpers\GlobalConstant.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Models\Claim.cs" />
