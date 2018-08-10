@@ -9,10 +9,10 @@
    - Enter url http://localhost:YourVisualStudioPort/api/serko/
    - Select POST request
    - Select Body tab, select raw checkbox, select text from message format dropdownlist
-   - Copy email content from coding exercise
+   - Copy email content from coding exercise to Postman body section
    - Click Send
    
-### My Assumption
+### My Assumptions
    - API receive a block text, so it should be no performance concern to processing text. As result, I choose synchronous API over asynchronous API
    - Replace all the emails with empty string so system can load XML content without XML syntax exception. Other than that, system is able to handle missing open/close xml tags
    - Data returns to user in JSON format and keep orginal values including special characters such as carriage return, tab
