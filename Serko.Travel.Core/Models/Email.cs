@@ -21,5 +21,23 @@ namespace Serko.Travel.Core.Models
 
 		[XmlElement("date")]
 		public string ReserveDate { get; set; }
+
+		public override bool Equals(object obj)
+		{
+			try
+			{
+				var compared = (Email)obj;
+				if (!compared.Claim.Equals(this.Claim)) return false;
+				if (compared.Vendor != this.Vendor) return false;
+				if (compared.Description != this.Description) return false;
+				if (compared.ReserveDate != this.ReserveDate) return false;
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+
+		}
 	}
 }

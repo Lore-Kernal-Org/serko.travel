@@ -45,10 +45,10 @@ namespace Serko.Travel.WebAPI.Controllers
 			}
 			catch (InvalidXMLTagException ex)
 			{
-				return BadRequest(ex.Message);
+				return  BadRequest(ex.Message);
 			}
 			
-			var json = JsonConvert.SerializeObject(email);
+			var json =  JsonConvert.SerializeObject(email);
 
 			return Ok(json);
 		}

@@ -16,5 +16,15 @@ namespace Serko.Travel.Core.Models
 		public decimal? Total { get; set; }
 		[XmlElement("payment_method")]
 		public string PaymentMethod { get; set; }
+
+		public override bool Equals(object obj)
+		{
+			var compared = (Claim)obj;
+			
+			if (compared.CostCenter != this.CostCenter) return false;
+			if (compared.Total != this.Total) return false;
+			if (compared.PaymentMethod != this.PaymentMethod) return false;
+			return true;
+		}
 	}
 }

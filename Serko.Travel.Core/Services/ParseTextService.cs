@@ -19,6 +19,7 @@ namespace Serko.Travel.Core.Services
 			
 			var email = XMLHelper.DeserializeObject<Email>(parsedXML);
 			IsValidEmailContent(email);
+			
 			return email;
 		}
 

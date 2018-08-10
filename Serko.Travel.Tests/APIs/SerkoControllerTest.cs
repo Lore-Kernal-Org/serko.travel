@@ -13,34 +13,15 @@ namespace Serko.Travel.Tests.APIs
 	[TestClass]
 	public class SerkoControllerTest
 	{
-
 		private Mock<IParseTextService> serviceMock;
 		private SerkoController controller;
-		private string xml = string.Empty;
 
 		[TestInitialize()]
 		public void Initialize()
 		{
-			// Arrange
+			// Setup
 			serviceMock = new Mock<IParseTextService>();
 			controller = new SerkoController(serviceMock.Object);
-			xml = @" 
-				Hi Yvaine,
-				Please create an expense claim for the below. Relevant details are marked up as requested…
-				<expense><cost_centre>DEV002</cost_centre> <total>890.55</total><payment_method>personal
-				card</payment_method>
-				</expense>
-				From: Ivan Castle
-				Sent: Friday, 16 February 2018 10:32 AM
-				To: Antoine Lloyd 
-				Subject: test
-				Hi Antoine,
-				Please create a reservation at the <vendor>Viaduct Steakhouse</vendor> our <description>development
-				team’s project end celebration dinner</description> on <date>Tuesday 27 April 2017</date>. We expect to
-				arrive around 7.15pm. Approximately 12 people but I’ll confirm exact numbers closer to the day.
-				Regards,
-				Ivan
-			";
 		}
 
 		[TestMethod]
@@ -54,13 +35,16 @@ namespace Serko.Travel.Tests.APIs
 					CostCenter = "Cost Center",
 					PaymentMethod = "Payment Method",
 					Total = (decimal) 8.0
-				}
+				},
+				Vendor="vendor",
+				Description="des",
+				ReserveDate ="date"
 			};
 			
-			serviceMock.Setup(x => x.ExtractData("mixed xml")).Returns(email);
+			serviceMock.Setup(x => x.ExtractData(It.IsAny<string>())).Returns(email);
 
 			// Action
-			var status = controller.Post("");
+			var status = controller.Post(It.IsAny<string>());
 
 			// Assert
 			Assert.IsInstanceOfType(status, typeof(OkNegotiatedContentResult<string>));
@@ -70,13 +54,26 @@ namespace Serko.Travel.Tests.APIs
 		public void SerkoController_Post_Failed_MissingTotal()
 		{
 			//Arrange
-			serviceMock.Setup(x => x.ExtractData("mixed xml")).Throws<MissingTotalException>();
+			serviceMock.Setup(x => x.ExtractData(It.IsAny<string>())).Throws<MissingTotalException>();
 
 			// Action
-			var status = controller.Post(xml);
+			var status = controller.Post(It.IsAny<string>());
 
 			// Assert
-			Assert.IsInstanceOfType(status, typeof(NotFoundResult));
+			Assert.IsInstanceOfType(status, typeof(BadRequestErrorMessageResult));
+		}
+
+		[TestMethod]
+		public void SerkoController_Post_Failed_InvalidXMLTagException()
+		{
+			//Arrange
+			serviceMock.Setup(x => x.ExtractData(It.IsAny<string>())).Throws<InvalidXMLTagException>();
+
+			// Action
+			var status = controller.Post(It.IsAny<string>());
+
+			// Assert
+			Assert.IsInstanceOfType(status, typeof(BadRequestErrorMessageResult));
 		}
 	}
 }

@@ -78,14 +78,13 @@
   <ItemGroup>
     <Compile Include="APIs\SerkoControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ParseTextServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Serko.Travel.Core\Serko.Travel.Core.csproj">
       <Project>{cb80c7ac-8205-4d54-b55b-ffee679cc10d}</Project>
