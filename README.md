@@ -17,6 +17,6 @@
    - Replace all the emails with empty string so system can load XML content without XML syntax exception. Other than that, system is able to handle missing open/close xml tags
    - Data returns to user in JSON format and keep orginal values including special characters such as carriage return, tab
    - No security consideration
-   - Missing <total> or <cost_center> mean its value doesn't supply
+   - Missing  <total> or <cost_center> mean its value doesn't supply
    
 ### Happy Coding!!!
