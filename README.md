@@ -1,5 +1,4 @@
-# Serko Travel API
-## Welcome to coding excercise
+# Serko Travel API - Coding excercise
 ### Steps to run application
 1. Download source code
 2. Open the solution in Visual Studio, perform package restore by right-click on solution and choose "Enable NuGet Package Restore"
