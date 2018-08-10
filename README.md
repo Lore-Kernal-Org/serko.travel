@@ -13,9 +13,9 @@
    - Click Send
    
 ### My Assumption
-   - API receive block text, it should be no performance concern to processing text. As result, I choose synchronous API over asynchronous API
-   - Replace all the emails with empty string so system can load without XML syntax exception. Other than that, system is able to handle missing open/close xml tags
-   - Data return to user in JSON format and keep orginal values including special characters such as carriage return, tab
+   - API receive a block text, so it should be no performance concern to processing text. As result, I choose synchronous API over asynchronous API
+   - Replace all the emails with empty string so system can load XML content without XML syntax exception. Other than that, system is able to handle missing open/close xml tags
+   - Data returns to user in JSON format and keep orginal values including special characters such as carriage return, tab
    - No security consideration
    - Missing <total> or <cost_center> mean its value doesn't supply
    
