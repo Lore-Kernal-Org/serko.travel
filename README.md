@@ -18,5 +18,7 @@
    - Data returns to user in JSON format and keep orginal values including special characters such as carriage return, tab
    - No security consideration
    - Missing  <total> or <cost_center> mean its value doesn't supply
-   
+
+### Update
+   - Add asynchronous API to support long process operation. Not implement unit test for Asynchronous API
 ### Happy Coding!!!
