@@ -52,5 +52,28 @@ namespace Serko.Travel.WebAPI.Controllers
 
 			return Ok(json);
 		}
+
+		[Route("api/serko/parsexml")]
+		[HttpPost]
+		public async Task<IHttpActionResult> ParseXML([FromBody] string value)
+		{
+			var email = new Email();
+			try
+			{
+				email = await Task.Run(() => service.ExtractDataAsync(value));
+			}
+			catch (MissingTotalException ex)
+			{
+				return BadRequest(ex.Message);
+			}
+			catch (InvalidXMLTagException ex)
+			{
+				return BadRequest(ex.Message);
+			}
+
+			var json = JsonConvert.SerializeObject(email);
+
+			return Ok(json);
+		}
 	}
 }

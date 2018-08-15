@@ -38,5 +38,17 @@ namespace Serko.Travel.Core.Services
 
 			return isValid;
 		}
+
+		public async Task<Email> ExtractDataAsync(string byEmail)
+		{
+			var email = await Task.Run(() => {
+				var emailDeserialized = XMLHelper.DeserializeObject<Email>(XMLHelper.ParseToXML(byEmail));
+				System.Threading.Thread.Sleep(5000);
+				IsValidEmailContent(emailDeserialized);
+				return emailDeserialized;
+			});			
+
+			return email;
+		}
 	}
 }

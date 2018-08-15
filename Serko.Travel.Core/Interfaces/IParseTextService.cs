@@ -10,5 +10,6 @@ namespace Serko.Travel.Core.Interfaces
 	public interface IParseTextService
 	{
 		Email ExtractData(string byEmail);
+		Task<Email> ExtractDataAsync(string byEmail);
 	}
 }
